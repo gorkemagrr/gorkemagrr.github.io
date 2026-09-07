@@ -1,300 +1,620 @@
 <!DOCTYPE html>
-<html lang="tr" class="scroll-smooth dark">
+<html lang="tr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Görkem Ağır — Portfolio</title>
+  <title>Görkem Ağır — Developer & Data Systems</title>
   
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Space Grotesk', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace']
-          }
-        }
-      }
-    }
-  </script>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
   <style>
-    body {
-      background-color: #050608;
-      color: #94a3b8;
-      font-family: 'Space Grotesk', sans-serif;
+    :root {
+      --bg-base: #06080d;
+      --bg-surface: #0c1017;
+      --bg-card: rgba(15, 20, 30, 0.7);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-glow: rgba(99, 102, 241, 0.35);
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --accent: #6366f1;
+      --accent-cyan: #06b6d4;
+      --accent-emerald: #10b981;
     }
 
-    /* Arka plan siber ızgara */
-    .bg-grid {
-      background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-      background-size: 44px 44px;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    /* Dinamik Fare Işığı */
-    .spotlight {
-      background: radial-gradient(650px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(99, 102, 241, 0.09), transparent 50%);
+    html, body {
+      background-color: var(--bg-base) !important;
+      color: var(--text-muted);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
     }
 
-    /* Mat Koyu Kartlar */
-    .neo-card {
-      background: rgba(10, 13, 20, 0.85);
-      border: 1px solid rgba(255, 255, 255, 0.07);
-      backdrop-filter: blur(14px);
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .neo-card:hover {
-      border-color: rgba(99, 102, 241, 0.45);
-      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8), 0 0 20px -5px rgba(99, 102, 241, 0.15);
-      transform: translateY(-2px);
+    /* Siber Arka Plan Izgarası */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: -2;
     }
 
-    .neo-btn {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      color: #cbd5e1;
-      transition: all 0.2s ease;
+    /* Fare Takip Eden Glow Işığı */
+    .mouse-glow {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      transition: opacity 0.3s;
     }
-    .neo-btn:hover {
-      background: rgba(99, 102, 241, 0.12);
-      border-color: rgba(99, 102, 241, 0.4);
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 24px 20px 80px 20px;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 24px;
+      background: rgba(12, 16, 23, 0.85);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      backdrop-filter: blur(16px);
+      margin-bottom: 32px;
+      position: sticky;
+      top: 16px;
+      z-index: 100;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 700;
+      font-size: 15px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+    }
+
+    /* Kart Mimarisi */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 24px;
+      padding: 32px;
+      backdrop-filter: blur(16px);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      border-color: var(--border-glow);
+      box-shadow: 0 16px 40px -15px rgba(0, 0, 0, 0.7), 0 0 25px -5px rgba(99, 102, 241, 0.15);
+      transform: translateY(-3px);
+    }
+
+    /* Hero Bölümü */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .avatar-wrap {
+      position: relative;
+      width: 140px;
+      height: 140px;
+    }
+
+    .avatar-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 22px;
+      object-cover: cover;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .status-badge {
+      position: absolute;
+      bottom: -6px;
+      right: -6px;
+      background: #06130e;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: var(--accent-emerald);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--accent-emerald);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--accent-emerald);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 12px;
+      background: rgba(99, 102, 241, 0.1);
+      border: 1px solid rgba(99, 102, 241, 0.25);
+      color: #818cf8;
+      border-radius: 8px;
+      font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 12px;
+    }
+
+    .hero-title {
+      color: var(--text-main);
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 8px;
+    }
+
+    .hero-sub {
+      font-size: 13px;
+      color: var(--accent-cyan);
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 14px;
+    }
+
+    .hero-bio {
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 18px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .btn:hover {
+      background: rgba(99, 102, 241, 0.15);
+      border-color: var(--accent);
       color: #ffffff;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background: #4f46e5;
+    }
+
+    /* İstatistik Şeridi (Sayfayı Dolduran Alan) */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .metric-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      padding: 16px;
+      border-radius: 16px;
+      text-align: center;
+    }
+
+    .metric-value {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--text-main);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .metric-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Bölüm Başlıkları */
+    .section-title {
+      font-size: 13px;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text-main);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin: 40px 0 16px 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title::before {
+      content: "//";
+      color: var(--accent);
+    }
+
+    /* Bento Grid (Yetenekler) */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .skill-card h3 {
+      font-size: 14px;
+      color: var(--text-main);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
+      padding: 5px 10px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      color: #cbd5e1;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Projeler */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .project-card {
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-card h4 {
+      font-size: 16px;
+      color: var(--text-main);
+      margin: 10px 0 6px 0;
+      transition: color 0.2s;
+    }
+
+    .project-card:hover h4 {
+      color: var(--accent);
+    }
+
+    .project-desc {
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .project-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--accent-cyan);
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 12px;
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 50px;
+      padding: 36px;
+      text-align: center;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 24px;
+    }
+
+    .footer h3 {
+      font-size: 20px;
+      color: var(--text-main);
+      margin-bottom: 8px;
+    }
+
+    .footer p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    /* Mobil Uyumluluk */
+    @media (max-width: 768px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .avatar-wrap {
+        margin: 0 auto;
+      }
+      .btn-row {
+        justify-content: center;
+      }
+      .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .skills-grid, .projects-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
-<body class="relative min-h-screen bg-grid spotlight selection:bg-indigo-600 selection:text-white">
+<body>
 
-  <!-- Üst Kısım Ambient Işık -->
-  <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-indigo-600/10 blur-[150px] pointer-events-none -z-10"></div>
+  <!-- Glow Efekti -->
+  <div class="mouse-glow" id="glow"></div>
 
-  <!-- Navbar -->
-  <header class="sticky top-4 z-50 max-w-4xl mx-auto px-4">
-    <nav class="neo-card rounded-2xl px-5 py-3 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-2 font-mono text-sm tracking-wider text-slate-200">
-        <span class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>
-        <span>ga.dev</span>
+  <div class="container">
+
+    <!-- Üst Menü -->
+    <header class="navbar">
+      <a href="#" class="nav-brand">
+        <i class="fa-solid fa-terminal" style="color: var(--accent);"></i> gorkem.dev
       </a>
-      <div class="flex items-center gap-4 text-xs font-mono text-slate-400">
-        <a href="#about" class="hover:text-indigo-400 transition">hakkımda</a>
-        <a href="#stack" class="hover:text-indigo-400 transition">stack</a>
-        <a href="#projects" class="hover:text-indigo-400 transition">projeler</a>
-        <a href="#contact" class="neo-btn px-3 py-1.5 rounded-lg text-slate-200 hover:text-white transition">iletişim</a>
-      </div>
-    </nav>
-  </header>
+      <ul class="nav-links">
+        <li><a href="#about">Hakkında</a></li>
+        <li><a href="#skills">Yetenekler</a></li>
+        <li><a href="#projects">Projeler</a></li>
+        <li><a href="mailto:gorkemagir344@gmail.com" class="btn" style="padding: 6px 14px;">Mail</a></li>
+      </ul>
+    </header>
 
-  <!-- Ana İçerik -->
-  <main class="max-w-4xl mx-auto px-4 py-12 space-y-6">
-
-    <!-- Hero / Profil Kartı -->
-    <div id="about" class="neo-card p-8 sm:p-10 rounded-3xl relative overflow-hidden">
-      <div class="flex flex-col sm:flex-row items-center sm:items-start gap-7">
+    <!-- Ana Profil Kartı -->
+    <section id="about" class="card">
+      <div class="hero-grid">
         
-        <!-- Avatar Görseli -->
-        <div class="relative shrink-0">
-          <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black/40">
-            <img src="https://github.com/gorkemagrr.png" alt="Görkem Ağır" class="w-full h-full object-cover grayscale-[15%] hover:grayscale-0 transition duration-300" />
+        <div class="avatar-wrap">
+          <img src="https://github.com/gorkemagrr.png" alt="Görkem Ağır" class="avatar-img" />
+          <div class="status-badge">
+            <span class="status-dot"></span> Online
           </div>
-          <span class="absolute -bottom-2 -right-2 px-2 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-mono flex items-center gap-1.5">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> açık
-          </span>
         </div>
 
-        <!-- Yazı & İçerik -->
-        <div class="text-center sm:text-left space-y-3 flex-1">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md text-[11px] font-mono bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
-            <i class="fa-solid fa-graduation-cap"></i> Trakya Üniversitesi • YBS
+        <div>
+          <div class="badge">
+            <i class="fa-solid fa-microchip"></i> MIS & Systems Engineering
           </div>
-
-          <h1 class="text-3xl sm:text-4xl font-bold text-slate-100 tracking-tight">
-            Görkem Ağır
-          </h1>
-
-          <p class="text-xs text-slate-500 font-mono flex items-center justify-center sm:justify-start gap-2">
-            <i class="fa-solid fa-location-dot text-indigo-400"></i> Edirne, Türkiye
+          <h1 class="hero-title">Görkem Ağır</h1>
+          <div class="hero-sub">Trakya Üniversitesi • Yönetim Bilişim Sistemleri</div>
+          <p class="hero-bio">
+            Backend mimarileri, düşük seviyeli algoritma optimizasyonu ve büyük ölçekli iş zekası sistemleri üzerine odaklanıyorum. Python & Django ile ölçeklenebilir servisler, C dili ile donanıma yakın çözümler, Power BI & İleri Excel ile veri odaklı karar mekanizmaları geliştiriyorum.
           </p>
-
-          <p class="text-sm text-slate-400 leading-relaxed max-w-xl">
-            Yönetim Bilişim Sistemleri öğrencisiyim. Backend servisleri (Python & Django), sistem algoritmaları (C), veritabanı mimarileri ve ileri seviye iş zekası analitiğini (Excel & Power BI) modern çözümlerle bir araya getiriyorum.
-          </p>
-
-          <!-- Sosyal Butonlar -->
-          <div class="pt-2 flex flex-wrap items-center justify-center sm:justify-start gap-2">
-            <a href="https://linkedin.com/in/gorkemagrr" target="_blank" class="neo-btn px-4 py-2 rounded-xl text-xs font-mono flex items-center gap-2">
-              <i class="fa-brands fa-linkedin text-indigo-400"></i> LinkedIn
+          <div class="btn-row">
+            <a href="https://linkedin.com/in/gorkemagrr" target="_blank" class="btn btn-primary">
+              <i class="fa-brands fa-linkedin"></i> LinkedIn
             </a>
-            <a href="https://github.com/gorkemagrr" target="_blank" class="neo-btn px-4 py-2 rounded-xl text-xs font-mono flex items-center gap-2">
-              <i class="fa-brands fa-github text-slate-400"></i> GitHub
+            <a href="https://github.com/gorkemagrr" target="_blank" class="btn">
+              <i class="fa-brands fa-github"></i> GitHub
             </a>
-            <a href="mailto:gorkemagir344@gmail.com" class="neo-btn px-4 py-2 rounded-xl text-xs font-mono flex items-center gap-2">
-              <i class="fa-solid fa-envelope text-slate-400"></i> Mail
+            <a href="mailto:gorkemagir344@gmail.com" class="btn">
+              <i class="fa-solid fa-envelope"></i> İletişim
             </a>
           </div>
         </div>
 
       </div>
+
+      <!-- Canlı Sayaçlar -->
+      <div class="metrics-grid">
+        <div class="metric-box">
+          <div class="metric-value">02+</div>
+          <div class="metric-label">Yıl Kodlama</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-value">C / Py</div>
+          <div class="metric-label">Core Diller</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-value">DAX</div>
+          <div class="metric-label">İş Zekası</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-value">SQL/NoSQL</div>
+          <div class="metric-label">Veritabanı</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Yetenekler Bölümü -->
+    <div class="section-title" id="skills">Teknoloji & Uzmanlık Kümeleri</div>
+    <div class="skills-grid">
+      
+      <div class="card skill-card">
+        <h3><i class="fa-solid fa-code" style="color: var(--accent);"></i> Backend & Sistem</h3>
+        <div class="tags">
+          <span class="tag"><i class="fa-brands fa-python" style="color: #eab308;"></i> Python</span>
+          <span class="tag"><i class="fa-solid fa-layer-group" style="color: #10b981;"></i> Django Framework</span>
+          <span class="tag"><i class="fa-solid fa-c" style="color: #3b82f6;"></i> C Dili</span>
+          <span class="tag"><i class="fa-solid fa-memory" style="color: #a855f7;"></i> Bellek Yönetimi</span>
+          <span class="tag"><i class="fa-brands fa-git-alt" style="color: #f97316;"></i> Git / GitHub</span>
+        </div>
+      </div>
+
+      <div class="card skill-card">
+        <h3><i class="fa-solid fa-chart-line" style="color: var(--accent-cyan);"></i> Veri & İş Zekası (BI)</h3>
+        <div class="tags">
+          <span class="tag"><i class="fa-solid fa-chart-pie" style="color: #f59e0b;"></i> Power BI (DAX)</span>
+          <span class="tag"><i class="fa-solid fa-table" style="color: #10b981;"></i> İleri Seviye Excel</span>
+          <span class="tag"><i class="fa-solid fa-leaf" style="color: #22c55e;"></i> MongoDB (NoSQL)</span>
+          <span class="tag"><i class="fa-solid fa-database" style="color: #0ea5e9;"></i> MySQL / SQL Server</span>
+          <span class="tag"><i class="fa-solid fa-filter" style="color: #ec4899;"></i> ETL Süreçleri</span>
+        </div>
+      </div>
+
     </div>
 
-    <!-- Tech Stack (Kompakt Bento Izgara) -->
-    <section id="stack" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      
-      <!-- Backend & Core -->
-      <div class="neo-card p-6 rounded-2xl space-y-4">
-        <div class="flex items-center justify-between border-b border-white/5 pb-3">
-          <div class="flex items-center gap-2">
-            <i class="fa-solid fa-code text-xs text-indigo-400"></i>
-            <h2 class="text-slate-200 text-xs font-mono uppercase tracking-wider">Backend & Diller</h2>
-          </div>
-          <span class="text-[10px] font-mono text-slate-600">01</span>
-        </div>
-        <div class="flex flex-wrap gap-2">
-          <span class="neo-btn px-3 py-1.5 rounded-lg text-xs font-mono flex items-center gap-2">
-            <i class="fa-brands fa-python text-yellow-500"></i> Python
-          </span>
-          <span class="neo-btn px-3 py-1.5 rounded-lg text-xs font-mono flex items-center gap-2">
-            <i class="fa-solid fa-layer-group text-emerald-500"></i> Django
-          </span>
-          <span class="neo-btn px-3 py-1.5 rounded-lg text-xs font-mono flex items-center gap-2">
-            <i class="fa-solid fa-terminal text-blue-400"></i> C Dili
-          </span>
-          <span class="neo-btn px-3 py-1.5 rounded-lg text-xs font-mono flex items-center gap-2">
-            <i class="fa-brands fa-git-alt text-orange-500"></i> Git
-          </span>
-        </div>
-      </div>
+    <!-- Projeler Bölümü -->
+    <div class="section-title" id="projects">Öne Çıkan Çalışmalar</div>
+    <div class="projects-grid">
 
-      <!-- Veri & BI -->
-      <div class="neo-card p-6 rounded-2xl space-y-4">
-        <div class="flex items-center justify-between border-b border-white/5 pb-3">
-          <div class="flex items-center gap-2">
-            <i class="fa-solid fa-chart-pie text-xs text-indigo-400"></i>
-            <h2 class="text-slate-200 text-xs font-mono uppercase tracking-wider">Veri & İş Zekası</h2>
-          </div>
-          <span class="text-[10px] font-mono text-slate-600">02</span>
-        </div>
-        <div class="flex flex-wrap gap-2">
-          <span class="neo-btn px-3 py-1.5 rounded-lg text-xs font-mono flex items-center gap-2">
-            <i class="fa-solid fa-chart-simple text-amber-400"></i> Power BI (DAX)
-          </span>
-          <span class="neo-btn px-3 py-1.5 rounded-lg text-xs font-mono flex items-center gap-2">
-            <i class="fa-solid fa-table text-emerald-400"></i> İleri Excel
-          </span>
-          <span class="neo-btn px-3 py-1.5 rounded-lg text-xs font-mono flex items-center gap-2">
-            <i class="fa-solid fa-leaf text-green-500"></i> MongoDB
-          </span>
-          <span class="neo-btn px-3 py-1.5 rounded-lg text-xs font-mono flex items-center gap-2">
-            <i class="fa-solid fa-server text-sky-400"></i> MySQL
-          </span>
-        </div>
-      </div>
-
-    </section>
-
-    <!-- Projeler -->
-    <section id="projects" class="space-y-4 pt-2">
-      <div class="flex items-center justify-between px-1">
-        <h2 class="text-slate-300 text-xs font-mono uppercase tracking-wider flex items-center gap-2">
-          <i class="fa-solid fa-folder text-indigo-400"></i> Seçilmiş Çalışmalar
-        </h2>
-        <span class="text-[10px] font-mono text-slate-600">REPOSITORIES</span>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        
-        <!-- Kart 1 -->
-        <a href="https://github.com/gorkemagrr" target="_blank" class="neo-card p-6 rounded-2xl block group">
-          <div class="flex justify-between items-start">
-            <span class="text-[11px] font-mono text-indigo-400">Backend</span>
-            <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-600 group-hover:text-indigo-400 transition"></i>
-          </div>
-          <h3 class="text-slate-200 font-semibold mt-4 text-base group-hover:text-indigo-400 transition">Django Web Platformu</h3>
-          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
-            Dinamik veritabanı ilişkileri, kimlik doğrulama modelleri ve modüler mimari.
+      <a href="https://github.com/gorkemagrr" target="_blank" class="card project-card">
+        <div>
+          <div class="badge" style="margin-bottom: 0;">Full-Stack</div>
+          <h4>Django Web Core Application</h4>
+          <p class="project-desc">
+            Modüler mimari, kimlik doğrulama akışları, ORM ilişkileri ve dinamik template motoruyla geliştirilmiş web platformu.
           </p>
-          <div class="mt-4 flex gap-2 text-[10px] text-slate-500 font-mono">
-            <span>Python</span> • <span>Django</span> • <span>SQLite</span>
-          </div>
-        </a>
+        </div>
+        <div class="project-footer">
+          <span>Python • Django • SQLite</span>
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </div>
+      </a>
 
-        <!-- Kart 2 -->
-        <a href="https://github.com/gorkemagrr" target="_blank" class="neo-card p-6 rounded-2xl block group">
-          <div class="flex justify-between items-start">
-            <span class="text-[11px] font-mono text-indigo-400">Analytics</span>
-            <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-600 group-hover:text-indigo-400 transition"></i>
-          </div>
-          <h3 class="text-slate-200 font-semibold mt-4 text-base group-hover:text-indigo-400 transition">Satış & KPI Analitik Paneli</h3>
-          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
-            Milyonlarca satırlık ham verinin modellenmesi ve DAX fonksiyonlarıyla dinamik gösterge paneline dönüştürülmesi.
+      <a href="https://github.com/gorkemagrr" target="_blank" class="card project-card">
+        <div>
+          <div class="badge" style="margin-bottom: 0;">Business Intelligence</div>
+          <h4>Satış & Finansal KPI Dashboard</h4>
+          <p class="project-desc">
+            İleri Excel fonksiyonları ve Power BI DAX formülleri ile kurumsal veriyi analiz eden interaktif gösterge paneli.
           </p>
-          <div class="mt-4 flex gap-2 text-[10px] text-slate-500 font-mono">
-            <span>Power BI</span> • <span>İleri Excel</span> • <span>DAX</span>
-          </div>
-        </a>
+        </div>
+        <div class="project-footer">
+          <span>Power BI • Excel • DAX</span>
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </div>
+      </a>
 
-        <!-- Kart 3 -->
-        <a href="https://github.com/gorkemagrr" target="_blank" class="neo-card p-6 rounded-2xl block group">
-          <div class="flex justify-between items-start">
-            <span class="text-[11px] font-mono text-indigo-400">Systems</span>
-            <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-600 group-hover:text-indigo-400 transition"></i>
-          </div>
-          <h3 class="text-slate-200 font-semibold mt-4 text-base group-hover:text-indigo-400 transition">C Veri Yapıları & Bellek</h3>
-          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
-            Düşük seviyeli bellek yönetimi, dinamik veri dizileri ve algoritmik verimlilik pratikleri.
+      <a href="https://github.com/gorkemagrr" target="_blank" class="card project-card">
+        <div>
+          <div class="badge" style="margin-bottom: 0;">Low-Level</div>
+          <h4>C Algoritmalar & Veri Yapıları</h4>
+          <p class="project-desc">
+            Dinamik bellek tahsisi (malloc/free), bağlı listeler, ağaç yapıları ve sistem seviyesinde performans odaklı kod blokları.
           </p>
-          <div class="mt-4 flex gap-2 text-[10px] text-slate-500 font-mono">
-            <span>C</span> • <span>Pointers</span> • <span>Memory</span>
-          </div>
-        </a>
+        </div>
+        <div class="project-footer">
+          <span>C • Pointers • Structs</span>
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </div>
+      </a>
 
-        <!-- Kart 4 -->
-        <a href="https://github.com/gorkemagrr" target="_blank" class="neo-card p-6 rounded-2xl block group">
-          <div class="flex justify-between items-start">
-            <span class="text-[11px] font-mono text-indigo-400">Database</span>
-            <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-600 group-hover:text-indigo-400 transition"></i>
-          </div>
-          <h3 class="text-slate-200 font-semibold mt-4 text-base group-hover:text-indigo-400 transition">İlişkisel & NoSQL Çözümleri</h3>
-          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
-            MySQL ilişkisel veri modelleri ve MongoDB doküman depolarının birlikte kullanımı.
+      <a href="https://github.com/gorkemagrr" target="_blank" class="card project-card">
+        <div>
+          <div class="badge" style="margin-bottom: 0;">Data Systems</div>
+          <h4>NoSQL & RDBMS Hibrit Veri Modeli</h4>
+          <p class="project-desc">
+            İlişkisel veritabanı (MySQL) ile esnek doküman tabanlı veritabanının (MongoDB) birlikte kurgulandığı veri akışları.
           </p>
-          <div class="mt-4 flex gap-2 text-[10px] text-slate-500 font-mono">
-            <span>MongoDB</span> • <span>MySQL</span> • <span>ETL</span>
-          </div>
-        </a>
+        </div>
+        <div class="project-footer">
+          <span>MongoDB • MySQL • Pipelines</span>
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </div>
+      </a>
 
-      </div>
-    </section>
+    </div>
 
-    <!-- Kapanış / İletişim -->
-    <footer id="contact" class="neo-card p-8 rounded-3xl text-center space-y-4 mt-12">
-      <h2 class="text-slate-200 font-semibold text-sm font-mono uppercase tracking-wider">İletişim</h2>
-      <p class="text-xs text-slate-400 max-w-sm mx-auto">
-        Yazılım geliştirme, veri analitiği veya staj süreçleri için dilediğin zaman yazabilirsin.
-      </p>
-      <div>
-        <a href="mailto:gorkemagir344@gmail.com" class="neo-btn inline-block px-5 py-2 rounded-xl font-mono text-xs text-indigo-400 hover:text-white">
-          gorkemagir344@gmail.com
-        </a>
-      </div>
-      <div class="pt-6 border-t border-white/5 text-[10px] text-slate-600 font-mono">
+    <!-- İletişim / Alt Kısım -->
+    <footer class="footer">
+      <h3>Birlikte Bir Proje Geliştirelim</h3>
+      <p>Yazılım geliştirme, veri analitiği, staj veya teknik iş birlikleri için bana doğrudan ulaşabilirsin.</p>
+      <a href="mailto:gorkemagir344@gmail.com" class="btn btn-primary" style="padding: 12px 24px;">
+        <i class="fa-solid fa-paper-plane"></i> gorkemagir344@gmail.com
+      </a>
+      <div style="margin-top: 30px; font-size: 11px; font-family: 'JetBrains Mono', monospace; color: #475569;">
         © 2026 Görkem Ağır. Tüm hakları saklıdır.
       </div>
     </footer>
 
-  </main>
+  </div>
 
-  <!-- Mouse Takip Işığı -->
   <script>
+    const glow = document.getElementById('glow');
     document.addEventListener('mousemove', (e) => {
-      document.body.style.setProperty('--mouse-x', `${e.clientX}px`);
-      document.body.style.setProperty('--mouse-y', `${e.clientY}px`);
+      glow.style.left = e.clientX + 'px';
+      glow.style.top = e.clientY + 'px';
     });
   </script>
 </body>
