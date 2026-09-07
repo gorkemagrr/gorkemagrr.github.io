@@ -544,28 +544,31 @@
       <!-- Canlı Terminal -->
       <!-- VS Code / Python Object Formatı -->
       <!-- Telemetry / Status Progress Formatı -->
+      <!-- 2x2 Kompakt Komut Grid'i -->
       <div class="terminal-box">
         <div class="terminal-header">
           <span class="terminal-dot active"></span>
           <span class="terminal-dot"></span>
           <span class="terminal-dot"></span>
-          <span style="font-size: 10px; color: #64748b; margin-left: 8px;">sys_monitor.sh — active</span>
+          <span style="font-size: 10px; color: #64748b; margin-left: 8px;">runtime_env — 4 active modules</span>
         </div>
-        <div class="terminal-line" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-          <span>[EXCEL_ADV] Power Query & Dynamic Formulas</span>
-          <span style="color: var(--accent);">[██████████] READY</span>
-        </div>
-        <div class="terminal-line" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-          <span>[C_SYSTEMS] Pointers & Memory Management</span>
-          <span style="color: var(--accent);">[██████████] ACTIVE</span>
-        </div>
-        <div class="terminal-line" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-          <span>[PY_DJANGO] Web APIs & ORM Architecture</span>
-          <span style="color: var(--accent);">[██████████] LOADED</span>
-        </div>
-        <div class="terminal-line" style="display: flex; justify-content: space-between; align-items: center;">
-          <span>[NO_SQL_DB] MongoDB Aggregation Pipelines</span>
-          <span style="color: var(--accent);">[██████████] ONLINE</span>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 10px;">
+          <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-subtle); padding: 10px; border-radius: 8px;">
+            <div style="color: var(--accent); font-size: 11px; margin-bottom: 3px;">$ exec --excel</div>
+            <div style="font-size: 12px; color: #cbd5e1;">İleri Seviye Modelleme & Power Query</div>
+          </div>
+          <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-subtle); padding: 10px; border-radius: 8px;">
+            <div style="color: var(--accent); font-size: 11px; margin-bottom: 3px;">$ gcc --c-lang</div>
+            <div style="font-size: 12px; color: #cbd5e1;">Düşük Seviyeli Bellek & Algoritmalar</div>
+          </div>
+          <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-subtle); padding: 10px; border-radius: 8px;">
+            <div style="color: var(--accent); font-size: 11px; margin-bottom: 3px;">$ python run --django</div>
+            <div style="font-size: 12px; color: #cbd5e1;">Modüler Web Backend & ORM</div>
+          </div>
+          <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-subtle); padding: 10px; border-radius: 8px;">
+            <div style="color: var(--accent); font-size: 11px; margin-bottom: 3px;">$ mongod --pipeline</div>
+            <div style="font-size: 12px; color: #cbd5e1;">NoSQL BSON & Aggregation Hub</div>
+          </div>
         </div>
       </div>
     </section>
