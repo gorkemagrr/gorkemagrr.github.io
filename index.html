@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Görkem Ağır — Systems & Data Portfolio</title>
+  <title>Görkem Ağır — Developer & Data Systems</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,12 +12,12 @@
 
   <style>
     :root {
-      --bg-base: #05070a;
-      --bg-surface: #0a0e14;
-      --bg-card: rgba(12, 16, 23, 0.85);
-      --border-subtle: rgba(255, 255, 255, 0.07);
+      --bg-base: #040609;
+      --bg-surface: #080d14;
+      --bg-card: rgba(10, 15, 24, 0.88);
+      --border-subtle: rgba(255, 255, 255, 0.08);
       
-      /* TEK VURGU RENK (Emerald Glow) */
+      /* TEK VURGU RENK: Zümrüt Neon */
       --accent: #10b981;
       --accent-muted: rgba(16, 185, 129, 0.12);
       --border-accent: rgba(16, 185, 129, 0.35);
@@ -40,7 +40,6 @@
       scroll-behavior: smooth;
     }
 
-    /* Siber Arka Plan Izgarası */
     body::before {
       content: "";
       position: fixed;
@@ -56,7 +55,6 @@
       z-index: -2;
     }
 
-    /* Fareyi Takip Eden Dinamik Işık */
     .mouse-glow {
       position: fixed;
       width: 650px;
@@ -125,7 +123,7 @@
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
       border-radius: 20px;
-      padding: 30px;
+      padding: 28px;
       backdrop-filter: blur(16px);
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
@@ -259,11 +257,11 @@
 
     .btn-primary:hover {
       background: var(--accent);
-      color: #05070a;
+      color: #040609;
       font-weight: 700;
     }
 
-    /* Terminal Kartı */
+    /* Terminal */
     .terminal-box {
       margin-top: 24px;
       background: #020305;
@@ -278,7 +276,7 @@
       display: flex;
       align-items: center;
       gap: 6px;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       border-bottom: 1px solid var(--border-subtle);
       padding-bottom: 8px;
     }
@@ -297,45 +295,14 @@
 
     .terminal-line {
       line-height: 1.6;
-      color: #94a3b8;
+      color: #cbd5e1;
     }
 
     .terminal-prompt {
       color: var(--accent);
     }
 
-    /* Metrik Sayaçları */
-    .metrics-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-      margin-top: 18px;
-    }
-
-    .metric-box {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      padding: 14px;
-      border-radius: 14px;
-      text-align: center;
-    }
-
-    .metric-value {
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--accent);
-      font-family: 'JetBrains Mono', monospace;
-    }
-
-    .metric-label {
-      font-size: 10px;
-      color: var(--text-muted);
-      margin-top: 3px;
-      text-transform: uppercase;
-      font-family: 'JetBrains Mono', monospace;
-    }
-
-    /* Bölüm Başlıkları */
+    /* 4 ANA ALAN (Core Pillars Grid) */
     .section-title {
       font-size: 12px;
       font-family: 'JetBrains Mono', monospace;
@@ -353,50 +320,74 @@
       color: var(--accent);
     }
 
-    /* Gridler */
-    .skills-grid, .projects-grid {
+    .pillars-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 14px;
     }
 
-    .skill-card h3 {
-      font-size: 13px;
-      color: var(--text-main);
+    .pillar-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .pillar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
       margin-bottom: 12px;
+    }
+
+    .pillar-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-main);
       display: flex;
       align-items: center;
       gap: 8px;
     }
 
-    .skill-card h3 i {
+    .pillar-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
       color: var(--accent);
+      background: var(--accent-muted);
+      border: 1px solid var(--border-accent);
+      padding: 2px 8px;
+      border-radius: 6px;
     }
 
-    .tags {
+    .pillar-desc {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .skills-chips {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
     }
 
-    .tag {
-      font-size: 11px;
+    .chip {
       font-family: 'JetBrains Mono', monospace;
-      padding: 4px 10px;
-      background: rgba(255, 255, 255, 0.02);
+      font-size: 11px;
+      padding: 4px 8px;
+      background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--border-subtle);
       border-radius: 6px;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      gap: 6px;
+      color: #94a3b8;
     }
 
-    .tag i {
-      color: var(--accent);
+    /* Projeler Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
     }
 
-    /* Projeler */
     .project-card {
       text-decoration: none;
       display: flex;
@@ -433,50 +424,6 @@
       padding-top: 10px;
     }
 
-    /* Timeline / Yol Haritası */
-    .timeline {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      position: relative;
-      padding-left: 20px;
-      border-left: 1px dashed var(--border-accent);
-    }
-
-    .timeline-item {
-      position: relative;
-    }
-
-    .timeline-dot {
-      position: absolute;
-      left: -26px;
-      top: 4px;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--bg-base);
-      border: 2px solid var(--accent);
-    }
-
-    .timeline-date {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      color: var(--accent);
-      margin-bottom: 4px;
-    }
-
-    .timeline-title {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-main);
-    }
-
-    .timeline-desc {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-top: 4px;
-    }
-
     /* Footer */
     .footer {
       margin-top: 40px;
@@ -499,13 +446,12 @@
       margin-bottom: 18px;
     }
 
-    /* Toast Bildirimi */
     #copy-toast {
       position: fixed;
       bottom: 24px;
       right: 24px;
       background: var(--accent);
-      color: #05070a;
+      color: #040609;
       padding: 8px 16px;
       border-radius: 8px;
       font-family: 'JetBrains Mono', monospace;
@@ -534,10 +480,7 @@
       .btn-row {
         justify-content: center;
       }
-      .metrics-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .skills-grid, .projects-grid {
+      .pillars-grid, .projects-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -550,21 +493,20 @@
 
   <div class="container">
 
-    <!-- Üst Menü -->
+    <!-- Navbar -->
     <header class="navbar">
       <a href="#" class="nav-brand">
         <i class="fa-solid fa-code" style="color: var(--accent);"></i> ga.dev
       </a>
       <ul class="nav-links">
         <li><a href="#about">hakkımda</a></li>
-        <li><a href="#skills">stack</a></li>
+        <li><a href="#pillars">uzmanlıklar</a></li>
         <li><a href="#projects">projeler</a></li>
-        <li><a href="#timeline">yol haritası</a></li>
         <li><button class="btn" style="padding: 5px 12px;" onclick="copyEmail()">kopyala mail</button></li>
       </ul>
     </header>
 
-    <!-- Hero / Profil -->
+    <!-- Hero Bölümü -->
     <section id="about" class="card">
       <div class="hero-grid">
         
@@ -577,12 +519,12 @@
 
         <div>
           <div class="badge">
-            <i class="fa-solid fa-terminal"></i> MIS & Systems Engineering
+            <i class="fa-solid fa-terminal"></i> MIS & Systems
           </div>
           <h1 class="hero-title">Görkem Ağır</h1>
           <div class="hero-sub">Trakya Üniversitesi • Yönetim Bilişim Sistemleri</div>
           <p class="hero-bio">
-            Backend mimarileri, sistem programlama ve kurumsal veri zekası üzerine odaklanıyorum. Python & Django ile ölçeklenebilir backendler, C dili ile düşük seviyeli algoritmalar, Power BI & İleri Excel ile veri odaklı karar sistemleri kurguluyorum.
+            Backend mimarileri, sistem programlama ve analitik veri modelleme üzerine çalışıyorum. Python & Django ile web platformları, C dili ile düşük seviyeli algoritmalar, MongoDB ile NoSQL veri hatları ve İleri Seviye Excel ile operasyonel karar sistemleri geliştiriyorum.
           </p>
           <div class="btn-row">
             <a href="https://linkedin.com/in/gorkemagrr" target="_blank" class="btn btn-primary">
@@ -599,7 +541,7 @@
 
       </div>
 
-      <!-- Canlı Terminal Simülasyonu -->
+      <!-- Canlı Terminal -->
       <div class="terminal-box">
         <div class="terminal-header">
           <span class="terminal-dot active"></span>
@@ -607,88 +549,136 @@
           <span class="terminal-dot"></span>
           <span style="font-size: 10px; color: #475569; margin-left: 8px;">bash — gorkem@dev:~$</span>
         </div>
-        <div class="terminal-line"><span class="terminal-prompt">gorkem@dev:~$</span> neofetch --skills</div>
-        <div class="terminal-line" style="color: #cbd5e1;">-> Stack: Python, C, Django, Power BI, Advanced Excel, MongoDB, MySQL</div>
-        <div class="terminal-line" style="color: #cbd5e1;">-> Status: Açık kaynak ve kurumsal veri projeleri inşa ediliyor.</div>
-      </div>
-
-      <!-- Metrik Sayaçları -->
-      <div class="metrics-grid">
-        <div class="metric-box">
-          <div class="metric-value">02+</div>
-          <div class="metric-label">Yıl Kodlama</div>
-        </div>
-        <div class="metric-box">
-          <div class="metric-value">C / Py</div>
-          <div class="metric-label">Core Diller</div>
-        </div>
-        <div class="metric-box">
-          <div class="metric-value">DAX</div>
-          <div class="metric-label">İş Zekası</div>
-        </div>
-        <div class="metric-box">
-          <div class="metric-value">SQL/NoSQL</div>
-          <div class="metric-label">Database</div>
-        </div>
+        <div class="terminal-line"><span class="terminal-prompt">gorkem@dev:~$</span> fetch-focus-stack</div>
+        <div class="terminal-line">• [01] İleri Seviye Excel: Dinamik Dizi Formülleri, Power Query & Modeller</div>
+        <div class="terminal-line">• [02] C Dili: Düşük Seviyeli Bellek (Pointers), Veri Yapıları & Algoritmalar</div>
+        <div class="terminal-line">• [03] Python & Django: Modüler Backend Servisleri, ORM & Auth Mimarisi</div>
+        <div class="terminal-line">• [04] MongoDB: NoSQL Doküman Yapıları, Aggregation Pipeline & CRUD</div>
       </div>
     </section>
 
-    <!-- Stack -->
-    <div class="section-title" id="skills">Teknoloji & Uzmanlık</div>
-    <div class="skills-grid">
-      
-      <div class="card skill-card">
-        <h3><i class="fa-solid fa-layer-group"></i> Backend & Diller</h3>
-        <div class="tags">
-          <span class="tag"><i class="fa-brands fa-python"></i> Python</span>
-          <span class="tag"><i class="fa-solid fa-code"></i> Django Framework</span>
-          <span class="tag"><i class="fa-solid fa-terminal"></i> C Dili</span>
-          <span class="tag"><i class="fa-solid fa-memory"></i> Bellek Mimarisi</span>
-          <span class="tag"><i class="fa-brands fa-git-alt"></i> Git / GitHub</span>
+    <!-- 4 ÖZEL UZMANLIK ALANI (CORE PILLARS) -->
+    <div class="section-title" id="pillars">Odaklandığım 4 Temel Yetkinlik</div>
+    <div class="pillars-grid">
+
+      <!-- 1. İleri Seviye Excel -->
+      <div class="card pillar-card">
+        <div>
+          <div class="pillar-header">
+            <div class="pillar-title">
+              <i class="fa-solid fa-table" style="color: var(--accent);"></i> İleri Seviye Excel
+            </div>
+            <span class="pillar-tag">Data Modeling</span>
+          </div>
+          <p class="pillar-desc">
+            Çoklu veri kümelerinin birleştirilmesi, DÜŞEYARA/ÇAPRAZARA, ÇOKETOPLA, Dinamik Dizi Formülleri ve Power Query ile ham verinin temizlenerek karar destek modellerine dönüştürülmesi.
+          </p>
+        </div>
+        <div class="skills-chips">
+          <span class="chip">Power Query</span>
+          <span class="chip">ÇOKETOPLA</span>
+          <span class="chip">ÇAPRAZARA</span>
+          <span class="chip">Pivot Tables</span>
+          <span class="chip">Dinamik Diziler</span>
         </div>
       </div>
 
-      <div class="card skill-card">
-        <h3><i class="fa-solid fa-chart-simple"></i> Veri Analitiği & Database</h3>
-        <div class="tags">
-          <span class="tag"><i class="fa-solid fa-chart-pie"></i> Power BI (DAX)</span>
-          <span class="tag"><i class="fa-solid fa-table"></i> İleri Seviye Excel</span>
-          <span class="tag"><i class="fa-solid fa-leaf"></i> MongoDB</span>
-          <span class="tag"><i class="fa-solid fa-database"></i> MySQL</span>
-          <span class="tag"><i class="fa-solid fa-filter"></i> ETL Modelleri</span>
+      <!-- 2. C Dili -->
+      <div class="card pillar-card">
+        <div>
+          <div class="pillar-header">
+            <div class="pillar-title">
+              <i class="fa-solid fa-terminal" style="color: var(--accent);"></i> C Dili & Sistemler
+            </div>
+            <span class="pillar-tag">Low-Level</span>
+          </div>
+          <p class="pillar-desc">
+            Dinamik bellek tahsisi (malloc/calloc/free), işaretçi (pointer) aritmetiği, struct mimarileri ve bağlı liste gibi temel veri yapılarıyla donanıma yakın yüksek performanslı algoritmalar.
+          </p>
+        </div>
+        <div class="skills-chips">
+          <span class="chip">Pointers</span>
+          <span class="chip">Bellek Yönetimi</span>
+          <span class="chip">Data Structures</span>
+          <span class="chip">Algoritmalar</span>
+          <span class="chip">Structs</span>
+        </div>
+      </div>
+
+      <!-- 3. Python & Django -->
+      <div class="card pillar-card">
+        <div>
+          <div class="pillar-header">
+            <div class="pillar-title">
+              <i class="fa-brands fa-python" style="color: var(--accent);"></i> Python & Django
+            </div>
+            <span class="pillar-tag">Web & Backend</span>
+          </div>
+          <p class="pillar-desc">
+            MVT mimarisi üzerine kurulu Django web uygulamaları, modüler backend servisleri, güvenli authentication akışları ve Python tabanlı otomasyon senaryoları.
+          </p>
+        </div>
+        <div class="skills-chips">
+          <span class="chip">Python 3</span>
+          <span class="chip">Django Framework</span>
+          <span class="chip">Django ORM</span>
+          <span class="chip">Authentication</span>
+          <span class="chip">REST APIs</span>
+        </div>
+      </div>
+
+      <!-- 4. MongoDB (NoSQL) -->
+      <div class="card pillar-card">
+        <div>
+          <div class="pillar-header">
+            <div class="pillar-title">
+              <i class="fa-solid fa-leaf" style="color: var(--accent);"></i> MongoDB (NoSQL)
+            </div>
+            <span class="pillar-tag">Database</span>
+          </div>
+          <p class="pillar-desc">
+            Esnek JSON/BSON doküman şemaları, indeksleme stratejileri, karmaşık veri filtreleme için Aggregation Pipelines ve Python sürücüleri (PyMongo) ile backend entegrasyonu.
+          </p>
+        </div>
+        <div class="skills-chips">
+          <span class="chip">BSON Documents</span>
+          <span class="chip">Aggregation Pipeline</span>
+          <span class="chip">PyMongo</span>
+          <span class="chip">Indexing</span>
+          <span class="chip">CRUD Ops</span>
         </div>
       </div>
 
     </div>
 
-    <!-- Projeler -->
+    <!-- Projeler Bölümü -->
     <div class="section-title" id="projects">Öne Çıkan Çalışmalar</div>
     <div class="projects-grid">
 
       <a href="https://github.com/gorkemagrr" target="_blank" class="card project-card">
         <div>
-          <div class="badge" style="margin-bottom: 0;">Backend</div>
-          <h4>Django Web Application</h4>
+          <div class="badge" style="margin-bottom: 0;">Backend Web</div>
+          <h4>Django Platform Mimarisi</h4>
           <p class="project-desc">
-            Modüler mimari, kimlik doğrulama akışları, ORM ilişkileri ve dinamik template yapısıyla kurgulanmış web platformu.
+            Python & Django altyapısıyla geliştirilmiş, modüler veri modellerine ve kullanıcı yetkilendirme katmanına sahip web backend çözümü.
           </p>
         </div>
         <div class="project-footer">
-          <span>Python • Django • SQLite</span>
+          <span>Python • Django • SQLite/MySQL</span>
           <i class="fa-solid fa-arrow-up-right-from-square"></i>
         </div>
       </a>
 
       <a href="https://github.com/gorkemagrr" target="_blank" class="card project-card">
         <div>
-          <div class="badge" style="margin-bottom: 0;">Business Intelligence</div>
-          <h4>Satış & KPI Analitik Paneli</h4>
+          <div class="badge" style="margin-bottom: 0;">NoSQL Data</div>
+          <h4>MongoDB Doküman Veri Hattı</h4>
           <p class="project-desc">
-            İleri Excel ve Power BI DAX ölçümleriyle kurumsal verileri analiz eden dinamik dashboard.
+            Esnek veri kümelerinin MongoDB üzerinde modellenmesi ve Python üzerinden aggregation pipeline sorgularıyla işlenmesi.
           </p>
         </div>
         <div class="project-footer">
-          <span>Power BI • Excel • DAX</span>
+          <span>MongoDB • PyMongo • JSON</span>
           <i class="fa-solid fa-arrow-up-right-from-square"></i>
         </div>
       </a>
@@ -698,66 +688,37 @@
           <div class="badge" style="margin-bottom: 0;">Systems</div>
           <h4>C Algoritmalar & Veri Yapıları</h4>
           <p class="project-desc">
-            Düşük seviyeli dinamik bellek yönetimi, işaretçiler (pointers) ve veri dizileriyle algoritmik problem çözümleri.
+            Düşük seviyeli bellek yönetimi, işaretçiler, bağlı listeler ve algoritmik verimlilik pratiklerinin yer aldığı sistem arşivi.
           </p>
         </div>
         <div class="project-footer">
-          <span>C • Pointers • Structs</span>
+          <span>C Dili • Pointers • Structs</span>
           <i class="fa-solid fa-arrow-up-right-from-square"></i>
         </div>
       </a>
 
       <a href="https://github.com/gorkemagrr" target="_blank" class="card project-card">
         <div>
-          <div class="badge" style="margin-bottom: 0;">Database</div>
-          <h4>NoSQL & RDBMS Hibrit Veri Hattı</h4>
+          <div class="badge" style="margin-bottom: 0;">Analytics</div>
+          <h4>İleri Excel Finans & KPI Modeli</h4>
           <p class="project-desc">
-            İlişkisel MySQL şemaları ile doküman tabanlı MongoDB koleksiyonlarının entegrasyonu.
+            Çoklu veri kaynaklarının Power Query ile ayıklanıp dinamik formüller ve Pivot analizlerle gösterge paneline dönüştürülmesi.
           </p>
         </div>
         <div class="project-footer">
-          <span>MongoDB • MySQL • Pipelines</span>
+          <span>İleri Excel • Power Query • Formüller</span>
           <i class="fa-solid fa-arrow-up-right-from-square"></i>
         </div>
       </a>
 
     </div>
 
-    <!-- Timeline / Yol Haritası -->
-    <div class="section-title" id="timeline">Eğitim & Yol Haritası</div>
-    <div class="card">
-      <div class="timeline">
-        
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">2024 — Günümüz</div>
-          <div class="timeline-title">Yönetim Bilişim Sistemleri (Lisans)</div>
-          <div class="timeline-desc">Trakya Üniversitesi — Yazılım geliştirme, veri tabanı modelleme, sistem analizi ve iş süreçleri optimizasyonu.</div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">2025 — 2026</div>
-          <div class="timeline-title">Backend & Sistem Geliştirme Odaklanması</div>
-          <div class="timeline-desc">C dili ile veri yapıları ve bellek yönetimi; Python & Django ile web API mimarileri ve otomasyon.</div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">2026</div>
-          <div class="timeline-title">İş Zekası & Veri Ambarı Analitiği</div>
-          <div class="timeline-desc">Power BI (DAX) ile dashboard tasarımı, İleri Seviye Excel modellemeleri ve MongoDB hibrit çözümleri.</div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- İletişim -->
+    <!-- Footer -->
     <footer class="footer">
       <h3>İletişime Geç</h3>
-      <p>Yazılım geliştirme, staj veya veri analitiği projeleri için dilediğin zaman yazabilirsin.</p>
+      <p>Yazılım projeleri, veri analitiği veya staj süreçleri için dilediğin zaman bana ulaşabilirsin.</p>
       <button class="btn btn-primary" style="padding: 10px 20px;" onclick="copyEmail()">
-        <i class="fa-solid fa-copy"></i> gorkemagir344@gmail.com (Kopyala)
+        <i class="fa-solid fa-envelope"></i> gorkemagir344@gmail.com (Kopyala)
       </button>
       <div style="margin-top: 24px; font-size: 11px; font-family: 'JetBrains Mono', monospace; color: #475569;">
         © 2026 Görkem Ağır. Tüm hakları saklıdır.
@@ -767,14 +728,12 @@
   </div>
 
   <script>
-    // Fare Takip Eden Glow
     const glow = document.getElementById('glow');
     document.addEventListener('mousemove', (e) => {
       glow.style.left = e.clientX + 'px';
       glow.style.top = e.clientY + 'px';
     });
 
-    // Mail Kopyalama Fonksiyonu
     function copyEmail() {
       const email = 'gorkemagir344@gmail.com';
       navigator.clipboard.writeText(email).then(() => {
