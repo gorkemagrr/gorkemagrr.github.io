@@ -17,7 +17,6 @@
       --bg-card: rgba(10, 15, 24, 0.88);
       --border-subtle: rgba(255, 255, 255, 0.08);
       
-      /* TEK VURGU RENK: Zümrüt Neon */
       --accent: #10b981;
       --accent-muted: rgba(16, 185, 129, 0.12);
       --border-accent: rgba(16, 185, 129, 0.35);
@@ -72,7 +71,6 @@
       padding: 24px 20px 80px 20px;
     }
 
-    /* Navbar */
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -118,7 +116,6 @@
       color: var(--accent);
     }
 
-    /* Kartlar */
     .card {
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
@@ -135,7 +132,6 @@
       transform: translateY(-2px);
     }
 
-    /* Hero */
     .hero-grid {
       display: grid;
       grid-template-columns: 130px 1fr;
@@ -261,48 +257,6 @@
       font-weight: 700;
     }
 
-    /* Terminal */
-    .terminal-box {
-      margin-top: 24px;
-      background: #020305;
-      border: 1px solid var(--border-subtle);
-      border-radius: 14px;
-      padding: 16px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
-    }
-
-    .terminal-header {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-bottom: 10px;
-      border-bottom: 1px solid var(--border-subtle);
-      padding-bottom: 8px;
-    }
-
-    .terminal-dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.15);
-    }
-
-    .terminal-dot.active {
-      background: var(--accent);
-      box-shadow: 0 0 6px var(--accent);
-    }
-
-    .terminal-line {
-      line-height: 1.6;
-      color: #cbd5e1;
-    }
-
-    .terminal-prompt {
-      color: var(--accent);
-    }
-
-    /* 4 ANA ALAN (Core Pillars Grid) */
     .section-title {
       font-size: 12px;
       font-family: 'JetBrains Mono', monospace;
@@ -381,7 +335,6 @@
       color: #94a3b8;
     }
 
-    /* Projeler Grid */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -424,7 +377,6 @@
       padding-top: 10px;
     }
 
-    /* Footer */
     .footer {
       margin-top: 40px;
       padding: 32px;
@@ -493,7 +445,6 @@
 
   <div class="container">
 
-    <!-- Navbar -->
     <header class="navbar">
       <a href="#" class="nav-brand">
         <i class="fa-solid fa-code" style="color: var(--accent);"></i> ga.dev
@@ -506,7 +457,6 @@
       </ul>
     </header>
 
-    <!-- Hero Bölümü -->
     <section id="about" class="card">
       <div class="hero-grid">
         
@@ -541,43 +491,56 @@
 
       </div>
 
-      <!-- Canlı Terminal -->
-      <!-- VS Code / Python Object Formatı -->
-      <!-- Telemetry / Status Progress Formatı -->
-      <!-- 2x2 Kompakt Komut Grid'i -->
-      <div class="terminal-box">
-        <div class="terminal-header">
-          <span class="terminal-dot active"></span>
-          <span class="terminal-dot"></span>
-          <span class="terminal-dot"></span>
-          <span style="font-size: 10px; color: #64748b; margin-left: 8px;">runtime_env — 4 active modules</span>
-        </div>
-        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 10px;">
-          <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-subtle); padding: 10px; border-radius: 8px;">
-            <div style="color: var(--accent); font-size: 11px; margin-bottom: 3px;">$ exec --excel</div>
-            <div style="font-size: 12px; color: #cbd5e1;">İleri Seviye Modelleme & Power Query</div>
+      <!-- LOGOLU 4'LÜ DOCK ALANI -->
+      <div style="margin-top: 24px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
+        
+        <div style="background: #020408; border: 1px solid var(--border-subtle); border-radius: 12px; padding: 12px 14px; display: flex; align-items: center; gap: 12px; transition: all 0.2s ease;" onmouseover="this.style.borderColor='var(--border-accent)'" onmouseout="this.style.borderColor='var(--border-subtle)'">
+          <div style="width: 32px; height: 32px; border-radius: 8px; background: rgba(16, 185, 129, 0.08); display: flex; align-items: center; justify-content: center; shrink-0;">
+            <i class="fa-solid fa-file-excel" style="color: var(--accent); font-size: 16px;"></i>
           </div>
-          <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-subtle); padding: 10px; border-radius: 8px;">
-            <div style="color: var(--accent); font-size: 11px; margin-bottom: 3px;">$ gcc --c-lang</div>
-            <div style="font-size: 12px; color: #cbd5e1;">Düşük Seviyeli Bellek & Algoritmalar</div>
-          </div>
-          <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-subtle); padding: 10px; border-radius: 8px;">
-            <div style="color: var(--accent); font-size: 11px; margin-bottom: 3px;">$ python run --django</div>
-            <div style="font-size: 12px; color: #cbd5e1;">Modüler Web Backend & ORM</div>
-          </div>
-          <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-subtle); padding: 10px; border-radius: 8px;">
-            <div style="color: var(--accent); font-size: 11px; margin-bottom: 3px;">$ mongod --pipeline</div>
-            <div style="font-size: 12px; color: #cbd5e1;">NoSQL BSON & Aggregation Hub</div>
+          <div>
+            <div style="font-size: 13px; font-weight: 700; color: var(--text-main); font-family: 'JetBrains Mono', monospace;">İleri Seviye Excel</div>
+            <div style="font-size: 11px; color: var(--text-muted);">Dinamik Diziler & Power Query</div>
           </div>
         </div>
+
+        <div style="background: #020408; border: 1px solid var(--border-subtle); border-radius: 12px; padding: 12px 14px; display: flex; align-items: center; gap: 12px; transition: all 0.2s ease;" onmouseover="this.style.borderColor='var(--border-accent)'" onmouseout="this.style.borderColor='var(--border-subtle)'">
+          <div style="width: 32px; height: 32px; border-radius: 8px; background: rgba(16, 185, 129, 0.08); display: flex; align-items: center; justify-content: center; shrink-0;">
+            <i class="fa-solid fa-c" style="color: var(--accent); font-size: 16px;"></i>
+          </div>
+          <div>
+            <div style="font-size: 13px; font-weight: 700; color: var(--text-main); font-family: 'JetBrains Mono', monospace;">C Dili & Algoritma</div>
+            <div style="font-size: 11px; color: var(--text-muted);">Bellek (Pointers) & Veri Yapıları</div>
+          </div>
+        </div>
+
+        <div style="background: #020408; border: 1px solid var(--border-subtle); border-radius: 12px; padding: 12px 14px; display: flex; align-items: center; gap: 12px; transition: all 0.2s ease;" onmouseover="this.style.borderColor='var(--border-accent)'" onmouseout="this.style.borderColor='var(--border-subtle)'">
+          <div style="width: 32px; height: 32px; border-radius: 8px; background: rgba(16, 185, 129, 0.08); display: flex; align-items: center; justify-content: center; shrink-0;">
+            <i class="fa-brands fa-python" style="color: var(--accent); font-size: 16px;"></i>
+          </div>
+          <div>
+            <div style="font-size: 13px; font-weight: 700; color: var(--text-main); font-family: 'JetBrains Mono', monospace;">Python & Django</div>
+            <div style="font-size: 11px; color: var(--text-muted);">Modüler Backend & ORM Mimarisi</div>
+          </div>
+        </div>
+
+        <div style="background: #020408; border: 1px solid var(--border-subtle); border-radius: 12px; padding: 12px 14px; display: flex; align-items: center; gap: 12px; transition: all 0.2s ease;" onmouseover="this.style.borderColor='var(--border-accent)'" onmouseout="this.style.borderColor='var(--border-subtle)'">
+          <div style="width: 32px; height: 32px; border-radius: 8px; background: rgba(16, 185, 129, 0.08); display: flex; align-items: center; justify-content: center; shrink-0;">
+            <i class="fa-solid fa-leaf" style="color: var(--accent); font-size: 16px;"></i>
+          </div>
+          <div>
+            <div style="font-size: 13px; font-weight: 700; color: var(--text-main); font-family: 'JetBrains Mono', monospace;">MongoDB (NoSQL)</div>
+            <div style="font-size: 11px; color: var(--text-muted);">BSON Şemalar & Aggregation</div>
+          </div>
+        </div>
+
       </div>
     </section>
 
-    <!-- 4 ÖZEL UZMANLIK ALANI (CORE PILLARS) -->
+    <!-- 4 UZMANLIK ALANI -->
     <div class="section-title" id="pillars">Odaklandığım 4 Temel Yetkinlik</div>
     <div class="pillars-grid">
 
-      <!-- 1. İleri Seviye Excel -->
       <div class="card pillar-card">
         <div>
           <div class="pillar-header">
@@ -599,7 +562,6 @@
         </div>
       </div>
 
-      <!-- 2. C Dili -->
       <div class="card pillar-card">
         <div>
           <div class="pillar-header">
@@ -621,7 +583,6 @@
         </div>
       </div>
 
-      <!-- 3. Python & Django -->
       <div class="card pillar-card">
         <div>
           <div class="pillar-header">
@@ -643,7 +604,6 @@
         </div>
       </div>
 
-      <!-- 4. MongoDB (NoSQL) -->
       <div class="card pillar-card">
         <div>
           <div class="pillar-header">
@@ -667,7 +627,7 @@
 
     </div>
 
-    <!-- Projeler Bölümü -->
+    <!-- PROJELER -->
     <div class="section-title" id="projects">Öne Çıkan Çalışmalar</div>
     <div class="projects-grid">
 
@@ -729,7 +689,7 @@
 
     </div>
 
-    <!-- Footer -->
+    <!-- FOOTER -->
     <footer class="footer">
       <h3>İletişime Geç</h3>
       <p>Yazılım projeleri, veri analitiği veya staj süreçleri için dilediğin zaman bana ulaşabilirsin.</p>
