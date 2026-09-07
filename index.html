@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Görkem Ağır — Developer & Data Analyst</title>
+  <title>Görkem Ağır — Portfolio</title>
   
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -11,13 +11,8 @@
       darkMode: 'class',
       theme: {
         extend: {
-          colors: {
-            brand: '#6366f1',
-            darkBg: '#05070c',
-            darkCard: '#0c1017'
-          },
           fontFamily: {
-            sans: ['Space Grotesk', 'Inter', 'sans-serif'],
+            sans: ['Space Grotesk', 'sans-serif'],
             mono: ['JetBrains Mono', 'monospace']
           }
         }
@@ -27,110 +22,120 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
   <style>
     body {
-      font-family: 'Space Grotesk', sans-serif;
-      background-color: #05070c;
+      background-color: #050608;
       color: #94a3b8;
-    }
-    
-    .spotlight {
-      background: radial-gradient(750px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(99, 102, 241, 0.07), transparent 45%);
+      font-family: 'Space Grotesk', sans-serif;
     }
 
-    .dark-card {
-      background: rgba(12, 16, 23, 0.85);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(16px);
+    /* Arka plan siber ızgara */
+    .bg-grid {
+      background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 44px 44px;
+    }
+
+    /* Dinamik Fare Işığı */
+    .spotlight {
+      background: radial-gradient(650px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(99, 102, 241, 0.09), transparent 50%);
+    }
+
+    /* Mat Koyu Kartlar */
+    .neo-card {
+      background: rgba(10, 13, 20, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(14px);
       transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .dark-card:hover {
-      border-color: rgba(99, 102, 241, 0.35);
-      box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.8), 0 0 20px -5px rgba(99, 102, 241, 0.12);
+    .neo-card:hover {
+      border-color: rgba(99, 102, 241, 0.45);
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8), 0 0 20px -5px rgba(99, 102, 241, 0.15);
       transform: translateY(-2px);
     }
 
-    .btn-dark {
+    .neo-btn {
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 255, 255, 0.08);
       color: #cbd5e1;
       transition: all 0.2s ease;
     }
-    .btn-dark:hover {
+    .neo-btn:hover {
       background: rgba(99, 102, 241, 0.12);
       border-color: rgba(99, 102, 241, 0.4);
       color: #ffffff;
     }
   </style>
 </head>
-<body class="relative min-h-screen selection:bg-indigo-600 selection:text-white spotlight">
+<body class="relative min-h-screen bg-grid spotlight selection:bg-indigo-600 selection:text-white">
 
-  <!-- Ambient Işık Spotları -->
-  <div class="fixed -top-40 left-1/3 w-[500px] h-[500px] bg-indigo-600/5 rounded-full blur-[160px] pointer-events-none -z-10"></div>
-  <div class="fixed bottom-10 -right-20 w-[400px] h-[400px] bg-blue-600/5 rounded-full blur-[160px] pointer-events-none -z-10"></div>
+  <!-- Üst Kısım Ambient Işık -->
+  <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-indigo-600/10 blur-[150px] pointer-events-none -z-10"></div>
 
   <!-- Navbar -->
-  <nav class="max-w-4xl mx-auto px-6 pt-8 flex items-center justify-between">
-    <a href="#" class="flex items-center gap-3 text-slate-200 font-bold tracking-wider">
-      <span class="px-2 py-0.5 rounded-md bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 font-mono text-xs">GA</span>
-      <span class="text-xs uppercase tracking-widest hidden sm:inline text-slate-300">Görkem Ağır</span>
-    </a>
-    <div class="flex items-center gap-5 text-[11px] font-mono uppercase tracking-wider text-slate-400">
-      <a href="#about" class="hover:text-indigo-400 transition">Hakkımda</a>
-      <a href="#skills" class="hover:text-indigo-400 transition">Stack</a>
-      <a href="#projects" class="hover:text-indigo-400 transition">Projeler</a>
-      <a href="#contact" class="btn-dark px-3 py-1 rounded-full text-slate-300 hover:text-white transition">İletişim</a>
-    </div>
-  </nav>
+  <header class="sticky top-4 z-50 max-w-4xl mx-auto px-4">
+    <nav class="neo-card rounded-2xl px-5 py-3 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2 font-mono text-sm tracking-wider text-slate-200">
+        <span class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span>
+        <span>ga.dev</span>
+      </a>
+      <div class="flex items-center gap-4 text-xs font-mono text-slate-400">
+        <a href="#about" class="hover:text-indigo-400 transition">hakkımda</a>
+        <a href="#stack" class="hover:text-indigo-400 transition">stack</a>
+        <a href="#projects" class="hover:text-indigo-400 transition">projeler</a>
+        <a href="#contact" class="neo-btn px-3 py-1.5 rounded-lg text-slate-200 hover:text-white transition">iletişim</a>
+      </div>
+    </nav>
+  </header>
 
-  <!-- Ana Alan -->
-  <main class="max-w-4xl mx-auto px-6 py-12 space-y-8">
+  <!-- Ana İçerik -->
+  <main class="max-w-4xl mx-auto px-4 py-12 space-y-6">
 
-    <!-- Profil & Bio -->
-    <div id="about" class="dark-card p-8 sm:p-10 rounded-2xl relative overflow-hidden">
-      <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-8">
+    <!-- Hero / Profil Kartı -->
+    <div id="about" class="neo-card p-8 sm:p-10 rounded-3xl relative overflow-hidden">
+      <div class="flex flex-col sm:flex-row items-center sm:items-start gap-7">
         
-        <!-- Avatar -->
-        <div class="relative group shrink-0">
-          <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden border border-white/10 group-hover:border-indigo-500/50 transition duration-300 shadow-2xl bg-black/40">
-            <img src="https://github.com/gorkemagrr.png" alt="Görkem Ağır" class="w-full h-full object-cover group-hover:scale-105 transition duration-300 grayscale-[20%] group-hover:grayscale-0" />
+        <!-- Avatar Görseli -->
+        <div class="relative shrink-0">
+          <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black/40">
+            <img src="https://github.com/gorkemagrr.png" alt="Görkem Ağır" class="w-full h-full object-cover grayscale-[15%] hover:grayscale-0 transition duration-300" />
           </div>
-          <span class="absolute -bottom-2 -right-2 px-2 py-0.5 rounded bg-[#091310] border border-emerald-500/20 text-emerald-400 text-[10px] font-mono flex items-center gap-1">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Aktif
+          <span class="absolute -bottom-2 -right-2 px-2 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-mono flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> açık
           </span>
         </div>
 
-        <!-- Başlık & Detaylar -->
+        <!-- Yazı & İçerik -->
         <div class="text-center sm:text-left space-y-3 flex-1">
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md text-[11px] font-mono bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
-            <i class="fa-solid fa-graduation-cap text-xs"></i> Trakya Üniversitesi • YBS
+            <i class="fa-solid fa-graduation-cap"></i> Trakya Üniversitesi • YBS
           </div>
 
-          <h1 class="text-2xl sm:text-4xl font-bold text-slate-100 tracking-tight">
+          <h1 class="text-3xl sm:text-4xl font-bold text-slate-100 tracking-tight">
             Görkem Ağır
           </h1>
 
-          <p class="text-xs text-slate-500 flex items-center justify-center sm:justify-start gap-2 font-mono">
+          <p class="text-xs text-slate-500 font-mono flex items-center justify-center sm:justify-start gap-2">
             <i class="fa-solid fa-location-dot text-indigo-400"></i> Edirne, Türkiye
           </p>
 
-          <p class="text-sm text-slate-400 leading-relaxed max-w-xl pt-1">
-            Yönetim Bilişim Sistemleri öğrencisiyim. Backend geliştirme (Python & Django), düşük seviyeli programlama (C), veritabanı mimarileri ve ileri seviye analitiği (Excel & Power BI) harmanlayan projeler geliştiriyorum.
+          <p class="text-sm text-slate-400 leading-relaxed max-w-xl">
+            Yönetim Bilişim Sistemleri öğrencisiyim. Backend servisleri (Python & Django), sistem algoritmaları (C), veritabanı mimarileri ve ileri seviye iş zekası analitiğini (Excel & Power BI) modern çözümlerle bir araya getiriyorum.
           </p>
 
-          <!-- Butonlar (Koyu Mat) -->
-          <div class="pt-3 flex flex-wrap items-center justify-center sm:justify-start gap-2.5">
-            <a href="https://linkedin.com/in/gorkemagrr" target="_blank" class="btn-dark px-4 py-2 rounded-xl text-xs font-mono flex items-center gap-2">
+          <!-- Sosyal Butonlar -->
+          <div class="pt-2 flex flex-wrap items-center justify-center sm:justify-start gap-2">
+            <a href="https://linkedin.com/in/gorkemagrr" target="_blank" class="neo-btn px-4 py-2 rounded-xl text-xs font-mono flex items-center gap-2">
               <i class="fa-brands fa-linkedin text-indigo-400"></i> LinkedIn
             </a>
-            <a href="https://github.com/gorkemagrr" target="_blank" class="btn-dark px-4 py-2 rounded-xl text-xs font-mono flex items-center gap-2">
+            <a href="https://github.com/gorkemagrr" target="_blank" class="neo-btn px-4 py-2 rounded-xl text-xs font-mono flex items-center gap-2">
               <i class="fa-brands fa-github text-slate-400"></i> GitHub
             </a>
-            <a href="mailto:gorkemagir344@gmail.com" class="btn-dark px-4 py-2 rounded-xl text-xs font-mono flex items-center gap-2">
-              <i class="fa-solid fa-envelope text-slate-400"></i> E-Posta
+            <a href="mailto:gorkemagir344@gmail.com" class="neo-btn px-4 py-2 rounded-xl text-xs font-mono flex items-center gap-2">
+              <i class="fa-solid fa-envelope text-slate-400"></i> Mail
             </a>
           </div>
         </div>
@@ -138,54 +143,54 @@
       </div>
     </div>
 
-    <!-- Tech Stack -->
-    <section id="skills" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <!-- Tech Stack (Kompakt Bento Izgara) -->
+    <section id="stack" class="grid grid-cols-1 md:grid-cols-2 gap-4">
       
-      <!-- Backend -->
-      <div class="dark-card p-6 rounded-2xl space-y-4">
+      <!-- Backend & Core -->
+      <div class="neo-card p-6 rounded-2xl space-y-4">
         <div class="flex items-center justify-between border-b border-white/5 pb-3">
-          <div class="flex items-center gap-2.5">
-            <i class="fa-solid fa-code text-indigo-400 text-sm"></i>
-            <h2 class="text-slate-200 text-xs font-semibold uppercase tracking-wider">Yazılım & Backend</h2>
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-code text-xs text-indigo-400"></i>
+            <h2 class="text-slate-200 text-xs font-mono uppercase tracking-wider">Backend & Diller</h2>
           </div>
           <span class="text-[10px] font-mono text-slate-600">01</span>
         </div>
         <div class="flex flex-wrap gap-2">
-          <span class="btn-dark px-3 py-1.5 rounded-lg text-xs font-mono flex items-center gap-2">
+          <span class="neo-btn px-3 py-1.5 rounded-lg text-xs font-mono flex items-center gap-2">
             <i class="fa-brands fa-python text-yellow-500"></i> Python
           </span>
-          <span class="btn-dark px-3 py-1.5 rounded-lg text-xs font-mono flex items-center gap-2">
+          <span class="neo-btn px-3 py-1.5 rounded-lg text-xs font-mono flex items-center gap-2">
             <i class="fa-solid fa-layer-group text-emerald-500"></i> Django
           </span>
-          <span class="btn-dark px-3 py-1.5 rounded-lg text-xs font-mono flex items-center gap-2">
+          <span class="neo-btn px-3 py-1.5 rounded-lg text-xs font-mono flex items-center gap-2">
             <i class="fa-solid fa-terminal text-blue-400"></i> C Dili
           </span>
-          <span class="btn-dark px-3 py-1.5 rounded-lg text-xs font-mono flex items-center gap-2">
-            <i class="fa-brands fa-git-alt text-orange-500"></i> Git & GitHub
+          <span class="neo-btn px-3 py-1.5 rounded-lg text-xs font-mono flex items-center gap-2">
+            <i class="fa-brands fa-git-alt text-orange-500"></i> Git
           </span>
         </div>
       </div>
 
-      <!-- Veri & Database -->
-      <div class="dark-card p-6 rounded-2xl space-y-4">
+      <!-- Veri & BI -->
+      <div class="neo-card p-6 rounded-2xl space-y-4">
         <div class="flex items-center justify-between border-b border-white/5 pb-3">
-          <div class="flex items-center gap-2.5">
-            <i class="fa-solid fa-chart-simple text-indigo-400 text-sm"></i>
-            <h2 class="text-slate-200 text-xs font-semibold uppercase tracking-wider">Veri & İş Zekası</h2>
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-chart-pie text-xs text-indigo-400"></i>
+            <h2 class="text-slate-200 text-xs font-mono uppercase tracking-wider">Veri & İş Zekası</h2>
           </div>
           <span class="text-[10px] font-mono text-slate-600">02</span>
         </div>
         <div class="flex flex-wrap gap-2">
-          <span class="btn-dark px-3 py-1.5 rounded-lg text-xs font-mono flex items-center gap-2">
-            <i class="fa-solid fa-chart-pie text-amber-400"></i> Power BI (DAX)
+          <span class="neo-btn px-3 py-1.5 rounded-lg text-xs font-mono flex items-center gap-2">
+            <i class="fa-solid fa-chart-simple text-amber-400"></i> Power BI (DAX)
           </span>
-          <span class="btn-dark px-3 py-1.5 rounded-lg text-xs font-mono flex items-center gap-2">
+          <span class="neo-btn px-3 py-1.5 rounded-lg text-xs font-mono flex items-center gap-2">
             <i class="fa-solid fa-table text-emerald-400"></i> İleri Excel
           </span>
-          <span class="btn-dark px-3 py-1.5 rounded-lg text-xs font-mono flex items-center gap-2">
-            <i class="fa-solid fa-database text-green-500"></i> MongoDB
+          <span class="neo-btn px-3 py-1.5 rounded-lg text-xs font-mono flex items-center gap-2">
+            <i class="fa-solid fa-leaf text-green-500"></i> MongoDB
           </span>
-          <span class="btn-dark px-3 py-1.5 rounded-lg text-xs font-mono flex items-center gap-2">
+          <span class="neo-btn px-3 py-1.5 rounded-lg text-xs font-mono flex items-center gap-2">
             <i class="fa-solid fa-server text-sky-400"></i> MySQL
           </span>
         </div>
@@ -196,64 +201,68 @@
     <!-- Projeler -->
     <section id="projects" class="space-y-4 pt-2">
       <div class="flex items-center justify-between px-1">
-        <h2 class="text-slate-300 text-xs font-mono uppercase tracking-widest flex items-center gap-2">
-          <i class="fa-solid fa-folder-open text-indigo-400"></i> Öne Çıkan Çalışmalar
+        <h2 class="text-slate-300 text-xs font-mono uppercase tracking-wider flex items-center gap-2">
+          <i class="fa-solid fa-folder text-indigo-400"></i> Seçilmiş Çalışmalar
         </h2>
-        <span class="text-[11px] text-slate-600 font-mono">SELECTED_PROJECTS</span>
+        <span class="text-[10px] font-mono text-slate-600">REPOSITORIES</span>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         
-        <a href="https://github.com/gorkemagrr" target="_blank" class="dark-card p-6 rounded-2xl block group">
+        <!-- Kart 1 -->
+        <a href="https://github.com/gorkemagrr" target="_blank" class="neo-card p-6 rounded-2xl block group">
           <div class="flex justify-between items-start">
-            <span class="text-[11px] font-mono text-indigo-400">Web Mimarisi</span>
+            <span class="text-[11px] font-mono text-indigo-400">Backend</span>
             <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-600 group-hover:text-indigo-400 transition"></i>
           </div>
           <h3 class="text-slate-200 font-semibold mt-4 text-base group-hover:text-indigo-400 transition">Django Web Platformu</h3>
           <p class="text-xs text-slate-400 mt-2 leading-relaxed">
-            Dinamik veritabanı modelleri, yetkilendirme akışları ve modüler backend servisleri.
+            Dinamik veritabanı ilişkileri, kimlik doğrulama modelleri ve modüler mimari.
           </p>
           <div class="mt-4 flex gap-2 text-[10px] text-slate-500 font-mono">
             <span>Python</span> • <span>Django</span> • <span>SQLite</span>
           </div>
         </a>
 
-        <a href="https://github.com/gorkemagrr" target="_blank" class="dark-card p-6 rounded-2xl block group">
+        <!-- Kart 2 -->
+        <a href="https://github.com/gorkemagrr" target="_blank" class="neo-card p-6 rounded-2xl block group">
           <div class="flex justify-between items-start">
-            <span class="text-[11px] font-mono text-indigo-400">İş Zekası (BI)</span>
+            <span class="text-[11px] font-mono text-indigo-400">Analytics</span>
             <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-600 group-hover:text-indigo-400 transition"></i>
           </div>
           <h3 class="text-slate-200 font-semibold mt-4 text-base group-hover:text-indigo-400 transition">Satış & KPI Analitik Paneli</h3>
           <p class="text-xs text-slate-400 mt-2 leading-relaxed">
-            Milyonlarca satırlık ham verinin temizlenip modellenmesi ve DAX fonksiyonlarıyla dinamikleştirilmesi.
+            Milyonlarca satırlık ham verinin modellenmesi ve DAX fonksiyonlarıyla dinamik gösterge paneline dönüştürülmesi.
           </p>
           <div class="mt-4 flex gap-2 text-[10px] text-slate-500 font-mono">
             <span>Power BI</span> • <span>İleri Excel</span> • <span>DAX</span>
           </div>
         </a>
 
-        <a href="https://github.com/gorkemagrr" target="_blank" class="dark-card p-6 rounded-2xl block group">
+        <!-- Kart 3 -->
+        <a href="https://github.com/gorkemagrr" target="_blank" class="neo-card p-6 rounded-2xl block group">
           <div class="flex justify-between items-start">
-            <span class="text-[11px] font-mono text-indigo-400">Sistem & Algoritma</span>
+            <span class="text-[11px] font-mono text-indigo-400">Systems</span>
             <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-600 group-hover:text-indigo-400 transition"></i>
           </div>
           <h3 class="text-slate-200 font-semibold mt-4 text-base group-hover:text-indigo-400 transition">C Veri Yapıları & Bellek</h3>
           <p class="text-xs text-slate-400 mt-2 leading-relaxed">
-            Düşük seviyeli bellek yönetimi, dinamik diziler ve algoritmik verimlilik uygulamaları.
+            Düşük seviyeli bellek yönetimi, dinamik veri dizileri ve algoritmik verimlilik pratikleri.
           </p>
           <div class="mt-4 flex gap-2 text-[10px] text-slate-500 font-mono">
-            <span>C</span> • <span>Pointers</span> • <span>Data Structures</span>
+            <span>C</span> • <span>Pointers</span> • <span>Memory</span>
           </div>
         </a>
 
-        <a href="https://github.com/gorkemagrr" target="_blank" class="dark-card p-6 rounded-2xl block group">
+        <!-- Kart 4 -->
+        <a href="https://github.com/gorkemagrr" target="_blank" class="neo-card p-6 rounded-2xl block group">
           <div class="flex justify-between items-start">
-            <span class="text-[11px] font-mono text-indigo-400">Veritabanı</span>
+            <span class="text-[11px] font-mono text-indigo-400">Database</span>
             <i class="fa-solid fa-arrow-up-right-from-square text-xs text-slate-600 group-hover:text-indigo-400 transition"></i>
           </div>
           <h3 class="text-slate-200 font-semibold mt-4 text-base group-hover:text-indigo-400 transition">İlişkisel & NoSQL Çözümleri</h3>
           <p class="text-xs text-slate-400 mt-2 leading-relaxed">
-            MySQL ilişkisel modelleri ve MongoDB doküman depolarının entegrasyonu.
+            MySQL ilişkisel veri modelleri ve MongoDB doküman depolarının birlikte kullanımı.
           </p>
           <div class="mt-4 flex gap-2 text-[10px] text-slate-500 font-mono">
             <span>MongoDB</span> • <span>MySQL</span> • <span>ETL</span>
@@ -263,14 +272,14 @@
       </div>
     </section>
 
-    <!-- İletişim / Kapanış -->
-    <footer id="contact" class="dark-card p-8 rounded-2xl text-center space-y-4 mt-12">
-      <h2 class="text-slate-200 font-semibold text-base">İletişime Geç</h2>
+    <!-- Kapanış / İletişim -->
+    <footer id="contact" class="neo-card p-8 rounded-3xl text-center space-y-4 mt-12">
+      <h2 class="text-slate-200 font-semibold text-sm font-mono uppercase tracking-wider">İletişim</h2>
       <p class="text-xs text-slate-400 max-w-sm mx-auto">
-        Yazılım projeleri, veri analitiği veya staj imkanları için dilediğin zaman yazabilirsin.
+        Yazılım geliştirme, veri analitiği veya staj süreçleri için dilediğin zaman yazabilirsin.
       </p>
       <div>
-        <a href="mailto:gorkemagir344@gmail.com" class="btn-dark inline-block px-5 py-2.5 rounded-xl font-mono text-xs text-indigo-400 hover:text-white">
+        <a href="mailto:gorkemagir344@gmail.com" class="neo-btn inline-block px-5 py-2 rounded-xl font-mono text-xs text-indigo-400 hover:text-white">
           gorkemagir344@gmail.com
         </a>
       </div>
@@ -281,6 +290,7 @@
 
   </main>
 
+  <!-- Mouse Takip Işığı -->
   <script>
     document.addEventListener('mousemove', (e) => {
       document.body.style.setProperty('--mouse-x', `${e.clientX}px`);
